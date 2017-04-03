@@ -3,19 +3,97 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+    <style>
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1 0 auto;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <header>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo"><i class="material-icons">alarm_on</i>Alert!</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+              <form>
+                <div class="input-field">
+                  <input id="search" type="search" required>
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+            </li>
+            <li><a href="#">Alarm</a></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <content>
+      <div class="row">
+        <form action="" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">subject</i>
+              <input id="title" type="text" placeholder="알람 제목" class="validate" data-length="20">
+              <!--<label for="title">Title</label>-->
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">schedule</i>
+              <input id="date" type="date"  class="datepicker">
+              <!--<label for="date">Title</label>-->
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              반복
+              <p>
+                <input name="day" type="checkbox" id="mon" />
+                <label for="mon">Mon</label>
+                <input name="day" type="checkbox" id="tue" />
+                <label for="tue">Tue</label>
+                <input name="day" type="checkbox" id="wed" />
+                <label for="wed">Wed</label>
+              </p>
+            </div>
+          </div>
+
+          <button class="btn-large waves-effect waves-light center-align" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </form>
+      </div>
+    </content>
+    <footer class="page-footer">
+      <div class="container"></div>
+      <div class="footer-copyright">
+        <div class="container">
+          copy
+        </div>
+      </div>
+    </footer>
   </body>
+ 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
   <script>
-    let myNoti = new Notification('Title', {
-      body: 'Hi!'
-    })
-    myNoti.onclick = () => {
-      console.log('aaa')
-    }
+    // let myNoti = new Notification('Title', {
+    //   body: 'Hi!'
+    // })
+    // myNoti.onclick = () => {
+    //   console.log('aaa')
+    // }
   </script>
 </html>
