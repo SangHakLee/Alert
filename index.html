@@ -20,7 +20,7 @@
   </head>
   <body>
     <header>
-      <nav>
+      <nav class="teal lighten-1">
         <div class="nav-wrapper">
           <a href="#" class="brand-logo"><i class="material-icons">alarm_on</i>Alert!</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -46,14 +46,14 @@
             <div class="input-field col s12">
               <i class="material-icons prefix">subject</i>
               <input id="title" type="text" placeholder="알람 제목" class="validate" data-length="20">
-              <!--<label for="title">Title</label>-->
+              <label for="title">Title</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">schedule</i>
-              <input id="date" type="date"  class="datepicker">
-              <!--<label for="date">Title</label>-->
+              <input id="date" type="date" class="datepicker">
+              <!--<label for="date">Date</label>-->
             </div>
           </div>
           <div class="row">
@@ -70,13 +70,26 @@
             </div>
           </div>
 
-          <button class="btn-large waves-effect waves-light center-align" type="submit" name="action">Submit
-            <i class="material-icons right">send</i>
-          </button>
+          <div class="row">
+            <div class="col s6 offset-s4">
+                <button class="btn-large waves-effect waves-light center-align" type="submit" name="action">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+            </div>
+          </div>
+
+          <div class="carousel">
+            <a class="carousel-item" href="#one!"><img src="http://lorempixel.com/250/250/nature/1"></a>
+            <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/250/250/nature/2"></a>
+            <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/250/250/nature/3"></a>
+            <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/250/250/nature/4"></a>
+            <a class="carousel-item" href="#five!"><img src="http://lorempixel.com/250/250/nature/5"></a>
+          </div>
+          
         </form>
       </div>
     </content>
-    <footer class="page-footer">
+    <footer class="page-footer teal lighten-1">
       <div class="container"></div>
       <div class="footer-copyright">
         <div class="container">
@@ -86,14 +99,21 @@
     </footer>
   </body>
  
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script>window.$ = window.jQuery = require('./scripts/jquery-2.1.1.min.js')</script>
+  <script>window.Hammer = require('./scripts/hammer.min.js')</script>
+  <!--<script>window.Materialize = require('./scripts/materialize.min.js')</script>-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
   <script>
+
     // let myNoti = new Notification('Title', {
     //   body: 'Hi!'
     // })
     // myNoti.onclick = () => {
     //   console.log('aaa')
     // }
+
+    $(document).ready(function(){
+      $('.carousel').carousel();
+    });
   </script>
 </html>
