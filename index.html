@@ -89,18 +89,21 @@
         </form>
       </div>
     </content>
-    <footer class="page-footer teal lighten-1">
+    <footer id="footer" class="page-footer teal lighten-1">
       <div class="container"></div>
       <div class="footer-copyright">
         <div class="container">
-          copy
+          {{copy}}
         </div>
       </div>
     </footer>
   </body>
- 
+  
   <script>window.$ = window.jQuery = require('./scripts/jquery-2.1.1.min.js')</script>
   <script>window.Hammer = require('./scripts/hammer.min.js')</script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!--<script>window.Materialize = require('./scripts/materialize.min.js')</script>-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
   <script>
@@ -112,8 +115,21 @@
     //   console.log('aaa')
     // }
 
-    $(document).ready(function(){
+    const footer = new Vue({
+      el: '#footer',
+      data: {
+        copy: 'footer-copyright'
+      }
+    })
+
+    const {ipcRenderer} = require('electron')
+    ipcRenderer.send('test', {title:'hak'})
+    ipcRenderer.on('test', (data) => {
+      console.log('data: ', data)
+    })
+
+    $(document).ready( () => {
       $('.carousel').carousel();
-    });
+    })
   </script>
 </html>

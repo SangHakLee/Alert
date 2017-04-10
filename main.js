@@ -1,6 +1,12 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const url = require('url')
+
+// ipcMain
+ipcMain.on('test', (event, arg) => {
+  console.log('on event:', event)
+  console.log('on arg:', arg)
+})
 
 // realm 쓰기 위해서
 // https://github.com/realm/realm-js/issues/765
@@ -20,7 +26,7 @@ db.write( () => {
   console.log('alarm',alarm.length)
   // let id = alarm[alarm.length-1].id  || 1
   let id = alarm[alarm.length-1] ? alarm[alarm.length-1].id : 1
-  db.create('Alarm', {id: id+1, title: 'Test'})
+  // db.create('Alarm', {id: id+1, title: 'Test'})
 })
 
 console.log(db.objects('Alarm'))
@@ -28,10 +34,11 @@ console.log(db.objects('Alarm'))
 let win
 
 function createWindow () {
-  win = new BrowserWindow({width: 800, height: 600})
+  win = new BrowserWindow({width: 1000, height: 800})
 
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
+    // pathname: path.join(__dirname, 'public/index.html'),
     protocol: 'file',
     slashes: true
   }))
