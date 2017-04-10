@@ -4,7 +4,6 @@ const url = require('url')
 
 // ipcMain
 ipcMain.on('test', (event, arg) => {
-  console.log('on event:', event)
   console.log('on arg:', arg)
 })
 
@@ -22,14 +21,15 @@ const Alarm = {name: 'Alarm', properties: {
 const db = new Realm({schema: [Alarm]})
 let alarm = db.objects('Alarm')
 
-db.write( () => {
-  console.log('alarm',alarm.length)
-  // let id = alarm[alarm.length-1].id  || 1
-  let id = alarm[alarm.length-1] ? alarm[alarm.length-1].id : 1
-  // db.create('Alarm', {id: id+1, title: 'Test'})
-})
+let addAlarm = (title) => {
+  db.write( () => {
+    // let id = alarm[alarm.length-1].id  || 1
+    let id = alarm[alarm.length-1] ? alarm[alarm.length-1].id : 1
+    db.create('Alarm', {id: id+1, title})
+  })
+}
 
-console.log(db.objects('Alarm'))
+console.log('Alarm objects', db.objects('Alarm'))
 
 let win
 

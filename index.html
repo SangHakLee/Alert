@@ -40,12 +40,12 @@
       </nav>
     </header>
     <content>
-      <div class="row">
+      <div id="addForm" class="row">
         <form action="" class="col s12">
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">subject</i>
-              <input id="title" type="text" placeholder="알람 제목" class="validate" data-length="20">
+              <input id="title" type="text" placeholder="알람 제목" class="validate" data-length="20" required v-model="title">
               <label for="title">Title</label>
             </div>
           </div>
@@ -72,7 +72,7 @@
 
           <div class="row">
             <div class="col s6 offset-s4">
-                <button class="btn-large waves-effect waves-light center-align" type="submit" name="action">Submit
+                <button v-on:click="send()" class="btn-large waves-effect waves-light center-align" type="button" name="action">Submit
                   <i class="material-icons right">send</i>
                 </button>
             </div>
@@ -115,6 +115,11 @@
     //   console.log('aaa')
     // }
 
+    const {ipcRenderer} = require('electron')
+    ipcRenderer.on('test', (data) => {
+      console.log('data: ', data)
+    })
+
     const footer = new Vue({
       el: '#footer',
       data: {
@@ -122,11 +127,19 @@
       }
     })
 
-    const {ipcRenderer} = require('electron')
-    ipcRenderer.send('test', {title:'hak'})
-    ipcRenderer.on('test', (data) => {
-      console.log('data: ', data)
+    const addForm = new Vue({
+      el: '#addForm',
+      data: {
+        title: ''
+      },
+      methods: {
+        send: (event) => {
+          ipcRenderer.send('test', {title: this.title})
+        } 
+      }
     })
+
+    
 
     $(document).ready( () => {
       $('.carousel').carousel();
