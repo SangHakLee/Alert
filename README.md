@@ -47,7 +47,7 @@ https://realm.io/kr/docs/get-started/installation/mac/
 
 `start-object-server.command` 오류 발생 시
 ```bash
-sudo vi /etc/hosts
+sudo vi /etc/hosts`
 
 # /etc/hosts
 127.0.0.1   localhost
@@ -57,3 +57,11 @@ sudo vi /etc/hosts
 https://realm.io/kr/docs/realm-object-server/
 
 `realm-mobile-platform` -> `start-object-server.command`
+
+### Realm 브라우저
+https://realm.io/kr/docs/get-started/installation/mac/#the-realm-browser
+
+- Server URL
+  - realm://127.0.0.1:9080
+- Access Token
+  - cat ./realm-object-server/admin_token.base64

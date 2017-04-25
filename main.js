@@ -2,9 +2,13 @@ const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const url = require('url')
 
-// ipcMain
-ipcMain.on('test', (event, arg) => {
-  console.log('on arg:', arg)
+// 알람 추가
+ipcMain.on('addAlarm', (event, arg) => {
+  addAlarm(arg.title._value)
+})
+
+ipcMain.on('start', (event, arg) => {
+  event.sender.send('start', db.objects('Alarm'))
 })
 
 // realm 쓰기 위해서
